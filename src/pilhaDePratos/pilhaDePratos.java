@@ -12,6 +12,16 @@ public class pilhaDePratos {
     //objeto anterior um objeto auxliar
     LISTA_PRATOS anterior = null;
 
+    private int contador;
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+
     public String empilhar(int numero) {
         StringBuilder builder = new StringBuilder();
 
@@ -25,6 +35,7 @@ public class pilhaDePratos {
             novo.setProx(topo);
             topo = novo;
         }
+        setContador(getContador()+1);
         builder.append("Número inserido na pilha.");
 
         return builder.toString();
@@ -37,7 +48,7 @@ public class pilhaDePratos {
         //o numeor a ser removido é o primeiro da lista
         topo = aux.getProx();
         aux = topo;
-
+        setContador(getContador()-1);
         builder.append("Elemento excluído com sucesso!");
         return builder.toString();
     }

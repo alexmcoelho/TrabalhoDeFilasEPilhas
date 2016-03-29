@@ -1,16 +1,16 @@
-package filaDoRestaurante;
+package filaDeBuffet;
 
 /**
  * Created by Alex on 29/03/2016.
  */
-public class filaDoRestaurante {
-    LISTA inicio = null;
+public class filaDoBuffet {
+    filaDoRestaurante.LISTA inicio = null;
     //o objeto fim contera o ultimo elemento da lista
-    LISTA fim = null;
+    filaDoRestaurante.LISTA fim = null;
     //O objeto aux é um objeto auxiliar
-    LISTA aux = null;
+    filaDoRestaurante.LISTA aux = null;
     //objeto anterior um objeto auxliar
-    LISTA anterior = null;
+    filaDoRestaurante.LISTA anterior = null;
 
     private int contador;
 
@@ -25,7 +25,7 @@ public class filaDoRestaurante {
     public String inserirNaFila(String nomeCliente) {
         StringBuilder builder = new StringBuilder();
 
-        LISTA novo = new LISTA();
+        filaDoRestaurante.LISTA novo = new filaDoRestaurante.LISTA();
         novo.setNome(nomeCliente);
         if (inicio == null) {
             inicio = novo;
@@ -64,10 +64,7 @@ public class filaDoRestaurante {
             builder.append(aux.getNome() + " | ");
             aux = aux.getProx();
         }
-        builder.append("\nQuantidade de pessoas na fila= "+getContador());
+        builder.append("\nQuantidade de pessoas na fila do Buffet= "+getContador());
         return builder.toString();
     }
-
-
 }
-
