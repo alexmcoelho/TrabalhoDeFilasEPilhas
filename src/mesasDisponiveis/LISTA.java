@@ -5,21 +5,19 @@ package mesasDisponiveis;
  * @author Alex
  */
 public class LISTA {
-    private String nome;
+    private String status;
     private LISTA prox;
 
     /**
      * @return the nome
      */
-    public String getNome() {
-        return nome;
+    public String getStatus() {
+        return status;
     }
 
-    /**
-     * @param nome the nome to set
-     */
-    public void setNome(String nome) {
-        this.nome = nome;
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     /**
