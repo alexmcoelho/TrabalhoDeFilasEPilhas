@@ -15,6 +15,7 @@ public class Main {
         filaClientes.inserirNaFila("Ricardo");
         filaClientes.inserirNaFila("Paulo");
         filaClientes.removerDaFila();
+        filaClientes.removerDaFila();
         mesas.insereTodasAsMesas();
         System.out.println(mesas.consultar());
         System.out.println(filaClientes.consultar());
