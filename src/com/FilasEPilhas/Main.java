@@ -19,6 +19,6 @@ public class Main {
         System.out.println(mesas.consultar());
         System.out.println(filaClientes.consultar());
 
-        //COMMIT TESTE A
+        //COMMIT TESTE LUCAS 3
     }
 }
