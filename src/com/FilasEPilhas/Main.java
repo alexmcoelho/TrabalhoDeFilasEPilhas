@@ -18,5 +18,7 @@ public class Main {
         mesas.insereTodasAsMesas();
         System.out.println(mesas.consultar());
         System.out.println(filaClientes.consultar());
+
+        //COMMIT TESTE
     }
 }
