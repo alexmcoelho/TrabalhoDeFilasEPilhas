@@ -4,28 +4,18 @@ package filaDoRestaurante;
  * Created by Alex on 29/03/2016.
  */
 public class filaDoRestaurante {
-    LISTA inicio = null;
+    ListaRestaurante inicio = null;
     //o objeto fim contera o ultimo elemento da lista
-    LISTA fim = null;
+    ListaRestaurante fim = null;
     //O objeto aux é um objeto auxiliar
-    LISTA aux = null;
-    //objeto anterior um objeto auxliar
-    LISTA anterior = null;
+    ListaRestaurante aux = null;
 
-    private int contador;
+    ListaRestaurante cont = new ListaRestaurante();
 
-    public int getContador() {
-        return contador;
-    }
-
-    public void setContador(int contador) {
-        this.contador = contador;
-    }
-
-    public String inserirNaFila(String nomeCliente) {
+    public String inserirNaFilaRestaurante(String nomeCliente) {
         StringBuilder builder = new StringBuilder();
 
-        LISTA novo = new LISTA();
+        ListaRestaurante novo = new ListaRestaurante();
         novo.setNome(nomeCliente);
         if (inicio == null) {
             inicio = novo;
@@ -38,7 +28,7 @@ public class filaDoRestaurante {
             fim.setProx(null);
             builder.append("Inserido na fila.");
         }
-        setContador(getContador()+1);
+        cont.setContador(cont.getContador()+1);
         return builder.toString();
     }
 
@@ -46,11 +36,11 @@ public class filaDoRestaurante {
         StringBuilder builder = new StringBuilder();
 
         aux = inicio;
-        //o numeor a ser removido é o primeiro da lista
-        inicio = aux.getProx();
+        //item a ser removido é o primeiro da lista
+        inicio = (ListaRestaurante) aux.getProx();
         aux = inicio;
 
-        setContador(getContador() - 1);
+        cont.setContador(cont.getContador() - 1);
         builder.append("Elemento excluído com sucesso!");
         return builder.toString();
     }
@@ -59,12 +49,17 @@ public class filaDoRestaurante {
         StringBuilder builder = new StringBuilder();
 
         System.out.println("Mostrando toda lista");
-        aux = inicio;
+        aux =  inicio;
         while (aux != null) {
             builder.append(aux.getNome() + " | ");
-            aux = aux.getProx();
+            aux = (ListaRestaurante) aux.getProx();
         }
-        builder.append("\nQuantidade de pessoas na fila= "+getContador());
+        return builder.toString();
+    }
+
+    public String numDePessoasQueEstaoNaFilaRest(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("\nQuantidade de pessoas que estão na fila do Restaurante = "+ cont.getContador());
         return builder.toString();
     }
 

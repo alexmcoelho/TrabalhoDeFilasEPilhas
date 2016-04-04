@@ -5,40 +5,29 @@ package mesasDisponiveis;
  */
 public class mesasDisponiveis {
 
-    LISTA inicio = null;
+    ListaMesasDisp inicio = null;
     //o objeto fim contera o ultimo elemento da lista
-    LISTA fim = null;
+    ListaMesasDisp fim = null;
     //O objeto aux é um objeto auxiliar
-    LISTA aux = null;
-    //objeto anterior um objeto auxliar
-    LISTA anterior = null;
+    ListaMesasDisp aux = null;
 
-    private int contador =30;
-
-    public int getContador() {
-        return contador;
-    }
-
-    public void setContador(int contador) {
-        this.contador = contador;
-    }
-
+    ListaMesasDisp cont = new ListaMesasDisp();
 
     //metodo que insere todas as mesas
     public void insereTodasAsMesas(){
-        for(int i = 0;i < getContador(); i++) {
-            LISTA novo = new LISTA();
+        cont.setContador(30);
+        for(int i = 0;i < cont.getContador(); i++) {
+            ListaMesasDisp novo = new ListaMesasDisp();
             novo.setStatus("LIVRE");
+            //insere MESA 30, MESA 29, MESA 28, ... ,
+            novo.setNomeDaMesa("MESA " + (cont.getContador() - i));
             if(i == 0){
-                // a lista estava vazia e o elemento ser� o primeiro e o
-                // �litmo
+                // a lista estava vazia e o elemento sera o primeiro e o ultimo
                 inicio = novo;
                 fim = novo;
                 novo.setProx(null);
             } else {
-                // a lista j� cont�m elementose o novo elemento ser�
-                // inserido
-                // no fim da lista
+                // a lista ja� contem elementos e o novo elemento sera inserido no fim da lista
                 fim.setProx(novo);
                 fim = novo;
                 fim.setProx(null);
@@ -46,19 +35,35 @@ public class mesasDisponiveis {
         }
     }
 
-    public void ocupaMesa(){
-        //StringBuilder builder = new StringBuilder();
+    public String ocupaMesa(String mesa){
+        StringBuilder builder = new StringBuilder();
         aux = inicio;
-        //o numeor a ser removido é o primeiro da lista
-        inicio = aux.getProx();
-        aux = inicio;
-        setContador(getContador()-1);
-        //builder.append("Elemento excluído com sucesso!");
-        //return builder.toString();
+        String soGuardaAMesa = "";
+        /*do{
+            if(aux.getNomeDaMesa().equals(mesa)) {
+                aux.setStatus("OCUPADA");
+                soGuardaAMesa = aux.getNomeDaMesa();
+                aux = (ListaMesasDisp) aux.getProx();
+            }else{
+                aux = (ListaMesasDisp) aux.getProx();
+            }
+        }while(aux != inicio);*/
+        while (aux != null) {
+            if(aux.getNomeDaMesa().equals(mesa)) {
+                aux.setStatus("OCUPADA");
+                soGuardaAMesa = aux.getNomeDaMesa();
+                aux = (ListaMesasDisp) aux.getProx();
+            }else{
+                aux = (ListaMesasDisp) aux.getProx();
+            }
+        }
+            builder.append("A Mesa que foi ocupada é a "+soGuardaAMesa+".");
+            //cont++
+        return builder.toString();
     }
 
     public void decupaMesa(){
-        LISTA novo = new LISTA();
+        ListaMesasDisp novo = new ListaMesasDisp();
         novo.setStatus("LIVRE");
         fim.setProx(novo);
         fim = novo;
@@ -71,8 +76,8 @@ public class mesasDisponiveis {
         System.out.println("Mostrando toda lista");
         aux = inicio;
         while (aux != null) {
-            builder.append(aux.getStatus() + " | ");
-            aux = aux.getProx();
+            builder.append(aux.getStatus() + " | " + aux.getNomeDaMesa() + "\n");
+            aux = (ListaMesasDisp) aux.getProx();
         }
         //builder.append("\nQuantidade de pessoas na fila do Buffet= "+getContador());
         return builder.toString();

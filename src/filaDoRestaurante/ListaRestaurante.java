@@ -5,13 +5,14 @@
  */
 package filaDoRestaurante;
 
+import com.FilasEPilhas.Lista;
+
 /**
  *
  * @author Alex
  */
-public class LISTA {
+public class ListaRestaurante extends Lista{
     private String nome;
-    private LISTA prox;
 
     /**
      * @return the nome
@@ -27,17 +28,6 @@ public class LISTA {
         this.nome = nome;
     }
 
-    /**
-     * @return the prox
-     */
-    public LISTA getProx() {
-        return prox;
-    }
 
-    /**
-     * @param prox the prox to set
-     */
-    public void setProx(LISTA prox) {
-        this.prox = prox;
-    }
+
 }

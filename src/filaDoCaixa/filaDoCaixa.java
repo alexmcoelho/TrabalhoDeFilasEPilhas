@@ -1,21 +1,21 @@
-package filaDeBuffet;
+package filaDoCaixa;
 
 /**
  * Created by Alex on 29/03/2016.
  */
-public class filaDoBuffet {
-    ListaBuffet inicio = null;
+public class filaDoCaixa {
+    ListaCaixa inicio = null;
     //o objeto fim contera o ultimo elemento da lista
-    ListaBuffet fim = null;
+    ListaCaixa fim = null;
     //O objeto aux é um objeto auxiliar
-    ListaBuffet aux = null;
+    ListaCaixa aux = null;
 
-    ListaBuffet cont = new ListaBuffet();
+    ListaCaixa cont = new ListaCaixa();
 
-    public String inserirNaFila(String nomeCliente) {
+    public String inserirNaFilaDoCaixa(String nomeCliente) {
         StringBuilder builder = new StringBuilder();
 
-        ListaBuffet novo = new ListaBuffet();
+        ListaCaixa novo = new ListaCaixa();
         novo.setNome(nomeCliente);
         if (inicio == null) {
             inicio = novo;
@@ -32,12 +32,12 @@ public class filaDoBuffet {
         return builder.toString();
     }
 
-    public String removerDaFila() {
+    public String removerDaFilaDoCaixa() {
         StringBuilder builder = new StringBuilder();
 
         aux = inicio;
-        //o numeor a ser removido é o primeiro da lista
-        inicio = (ListaBuffet) aux.getProx();
+        //item a ser removido é o primeiro da lista
+        inicio = (ListaCaixa) aux.getProx();
         aux = inicio;
 
         cont.setContador(cont.getContador() - 1);
@@ -49,17 +49,20 @@ public class filaDoBuffet {
         StringBuilder builder = new StringBuilder();
 
         System.out.println("Mostrando toda lista");
-        aux = inicio;
+        aux =  inicio;
         while (aux != null) {
             builder.append(aux.getNome() + " | ");
-            aux = (ListaBuffet) aux.getProx();
+            aux = (ListaCaixa) aux.getProx();
         }
         return builder.toString();
     }
 
-    public String numDePessoasQueEstaoNaFilaBuffet(){
+    public String numDePessoasQueEstaoNaFilaCaixa(){
         StringBuilder builder = new StringBuilder();
-        builder.append("\nQuantidade de pessoas que estão na fila do Buffet = " + cont.getContador());
+        builder.append("\nQuantidade de pessoas que estão na fila do Caixa = "+ cont.getContador());
         return builder.toString();
     }
+
+
 }
+

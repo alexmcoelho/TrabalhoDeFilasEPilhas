@@ -1,19 +1,12 @@
 package filaDoCaixa;
 
+import com.FilasEPilhas.Lista;
+
 /**
  * Created by Alex on 29/03/2016.
  */
-public class LISTA {
+public class ListaCaixa extends Lista{
     private String nome;
-    private LISTA prox;
-
-    public LISTA getProx() {
-        return prox;
-    }
-
-    public void setProx(LISTA prox) {
-        this.prox = prox;
-    }
 
     public String getNome() {
         return nome;

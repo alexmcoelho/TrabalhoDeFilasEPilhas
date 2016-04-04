@@ -1,13 +1,14 @@
 package mesasDisponiveis;
 
+import com.FilasEPilhas.Lista;
+
 /**
  *
  * @author Alex
  */
-public class LISTA {
+public class ListaMesasDisp extends Lista {
     private String status;
-    private LISTA prox;
-
+    private String nomeDaMesa;
     /**
      * @return the nome
      */
@@ -20,17 +21,11 @@ public class LISTA {
         this.status = status;
     }
 
-    /**
-     * @return the prox
-     */
-    public LISTA getProx() {
-        return prox;
+    public String getNomeDaMesa() {
+        return nomeDaMesa;
     }
 
-    /**
-     * @param prox the prox to set
-     */
-    public void setProx(LISTA prox) {
-        this.prox = prox;
+    public void setNomeDaMesa(String nomeDaMesa) {
+        this.nomeDaMesa = nomeDaMesa;
     }
 }
