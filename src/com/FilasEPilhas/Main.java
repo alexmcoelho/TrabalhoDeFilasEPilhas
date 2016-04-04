@@ -11,17 +11,12 @@ public class Main {
         mesasDisponiveis mesas = new mesasDisponiveis();
 
 
-        filaClientes.inserirNaFilaRestaurante("Marcos");
-        filaClientes.inserirNaFilaRestaurante("Ricardo");
-        filaClientes.inserirNaFilaRestaurante("Paulo");
+        filaClientes.inserirNaFila("Marcos");
+        filaClientes.inserirNaFila("Ricardo");
+        filaClientes.inserirNaFila("Paulo");
         filaClientes.removerDaFila();
         mesas.insereTodasAsMesas();
         System.out.println(mesas.consultar());
         System.out.println(filaClientes.consultar());
-        System.out.println(filaClientes.numDePessoasQueEstaoNaFilaRest());
-        System.out.println(mesas.ocupaMesa("MESA 1"));
-        System.out.println(mesas.consultar());
-        System.out.println(mesas.ocupaMesa("MESA 7"));
-        System.out.println(mesas.consultar());
     }
 }
