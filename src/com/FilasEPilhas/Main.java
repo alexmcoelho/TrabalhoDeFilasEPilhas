@@ -1,6 +1,7 @@
 package com.FilasEPilhas;
 import filaDoRestaurante.*;
 import mesasDisponiveis.*;
+import pilhaDePratos.*;
 
 public class Main {
 
@@ -9,14 +10,19 @@ public class Main {
 
         filaDoRestaurante filaClientes = new filaDoRestaurante();
         mesasDisponiveis mesas = new mesasDisponiveis();
+        pilhaDePratos pratos = new  pilhaDePratos();
 
 
-        filaClientes.inserirNaFila("Marcos");
-        filaClientes.inserirNaFila("Ricardo");
-        filaClientes.inserirNaFila("Paulo");
+        filaClientes.inserirNaFilaRestaurante("Marcos");
+        filaClientes.inserirNaFilaRestaurante("Ricardo");
+        filaClientes.inserirNaFilaRestaurante("Paulo");
         filaClientes.removerDaFila();
         mesas.insereTodasAsMesas();
         System.out.println(mesas.consultar());
         System.out.println(filaClientes.consultar());
+        System.out.println(mesas.ocupaMesa("MESA 1"));
+        System.out.println(mesas.ocupaMesa("MESA 7"));
+        System.out.println(mesas.consultar());
+        System.out.println(pratos.verificaSePilhaDePratos());
     }
 }

@@ -11,16 +11,16 @@ public class mesasDisponiveis {
     //O objeto aux é um objeto auxiliar
     ListaMesasDisp aux = null;
 
-    ListaMesasDisp cont = new ListaMesasDisp();
+    ListaMesasDisp contMesaLivre = new ListaMesasDisp();
 
     //metodo que insere todas as mesas
     public void insereTodasAsMesas(){
-        cont.setContador(30);
-        for(int i = 0;i < cont.getContador(); i++) {
+        contMesaLivre.setContador(30);
+        for(int i = 0;i < contMesaLivre.getContador(); i++) {
             ListaMesasDisp novo = new ListaMesasDisp();
             novo.setStatus("LIVRE");
             //insere MESA 30, MESA 29, MESA 28, ... ,
-            novo.setNomeDaMesa("MESA " + (cont.getContador() - i));
+            novo.setNomeDaMesa("MESA " + (contMesaLivre.getContador() - i));
             if(i == 0){
                 // a lista estava vazia e o elemento sera o primeiro e o ultimo
                 inicio = novo;
@@ -39,35 +39,52 @@ public class mesasDisponiveis {
         StringBuilder builder = new StringBuilder();
         aux = inicio;
         String soGuardaAMesa = "";
-        /*do{
-            if(aux.getNomeDaMesa().equals(mesa)) {
+        boolean mesaEstaLivre = false;
+        while (aux != null && mesaEstaLivre == false) {
+            if(aux.getNomeDaMesa().equals(mesa) && aux.getStatus().equals("LIVRE")) {
                 aux.setStatus("OCUPADA");
                 soGuardaAMesa = aux.getNomeDaMesa();
                 aux = (ListaMesasDisp) aux.getProx();
-            }else{
-                aux = (ListaMesasDisp) aux.getProx();
-            }
-        }while(aux != inicio);*/
-        while (aux != null) {
-            if(aux.getNomeDaMesa().equals(mesa)) {
-                aux.setStatus("OCUPADA");
-                soGuardaAMesa = aux.getNomeDaMesa();
-                aux = (ListaMesasDisp) aux.getProx();
+                mesaEstaLivre = true;
             }else{
                 aux = (ListaMesasDisp) aux.getProx();
             }
         }
+
+        if(mesaEstaLivre == true){
+            //retira 1 do contador
+            contMesaLivre.setContador(contMesaLivre.getContador() - 1);
             builder.append("A Mesa que foi ocupada é a "+soGuardaAMesa+".");
-            //cont++
+        }else{
+            builder.append("A Mesa informada está incorreta!");
+        }
         return builder.toString();
     }
 
-    public void decupaMesa(){
-        ListaMesasDisp novo = new ListaMesasDisp();
-        novo.setStatus("LIVRE");
-        fim.setProx(novo);
-        fim = novo;
-        fim.setProx(null);
+    public String decupaMesa(String mesa){
+        StringBuilder builder = new StringBuilder();
+        aux = inicio;
+        String soGuardaAMesa = "";
+        boolean desocupouMesa = false;
+        while (aux != null && desocupouMesa == false) {
+            //verifica status
+            if(aux.getNomeDaMesa().equals(mesa)) {
+                aux.setStatus("LIVRE");
+                soGuardaAMesa = aux.getNomeDaMesa();
+                aux = (ListaMesasDisp) aux.getProx();
+                desocupouMesa = false;
+            }else{
+                aux = (ListaMesasDisp) aux.getProx();
+            }
+        }
+        if(desocupouMesa == true){
+            //add 1 no contador
+            contMesaLivre.setContador(contMesaLivre.getContador() + 1);
+            builder.append("A Mesa que foi desocupada é a "+soGuardaAMesa+".");
+        }else{
+            builder.append("A Mesa informada está incorreta!");
+        }
+        return builder.toString();
     }
 
     public String consultar() {
@@ -79,7 +96,11 @@ public class mesasDisponiveis {
             builder.append(aux.getStatus() + " | " + aux.getNomeDaMesa() + "\n");
             aux = (ListaMesasDisp) aux.getProx();
         }
-        //builder.append("\nQuantidade de pessoas na fila do Buffet= "+getContador());
+        //builder.append("\nQuantidade de mesas livres = " + contMesaLivre.getContador());
         return builder.toString();
+    }
+
+    public int mesasDisponiveis(){
+        return contMesaLivre.getContador();
     }
 }

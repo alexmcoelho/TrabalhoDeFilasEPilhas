@@ -1,12 +1,12 @@
 package pilhaDePratos;
 
+import com.FilasEPilhas.Lista;
+
 /**
  * Created by Alex on 29/03/2016.
  */
-public class LISTA_PRATOS {
+public class ListaDePratos extends Lista{
     private int numPrato;
-    private LISTA_PRATOS prox;
-
     /**
      * @return the numPrato
      */
@@ -19,19 +19,5 @@ public class LISTA_PRATOS {
      */
     public void setNumPrato(int numPrato) {
         this.numPrato = numPrato;
-    }
-
-    /**
-     * @return the prox
-     */
-    public LISTA_PRATOS getProx() {
-        return prox;
-    }
-
-    /**
-     * @param prox the prox to set
-     */
-    public void setProx(LISTA_PRATOS prox) {
-        this.prox = prox;
     }
 }

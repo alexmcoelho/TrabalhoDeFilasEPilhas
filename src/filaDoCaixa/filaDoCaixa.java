@@ -12,7 +12,7 @@ public class filaDoCaixa {
 
     ListaCaixa cont = new ListaCaixa();
 
-    public String inserirNaFilaDoCaixa(String nomeCliente) {
+    public String inserirNaFilaDoCaixa(String nomeCliente, float valor) {
         StringBuilder builder = new StringBuilder();
 
         ListaCaixa novo = new ListaCaixa();
@@ -57,10 +57,8 @@ public class filaDoCaixa {
         return builder.toString();
     }
 
-    public String numDePessoasQueEstaoNaFilaCaixa(){
-        StringBuilder builder = new StringBuilder();
-        builder.append("\nQuantidade de pessoas que estão na fila do Caixa = "+ cont.getContador());
-        return builder.toString();
+    public int qtdPessoasFilaDoCaixa(){
+        return cont.getContador();
     }
 
 

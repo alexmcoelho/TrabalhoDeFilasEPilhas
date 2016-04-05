@@ -15,5 +15,6 @@ public class ListaCaixa extends Lista{
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 }
 
