@@ -28,13 +28,11 @@ public class pilhaDePratos {
                 novo.setProx(topo);
                 topo = novo;
             }
-
         }
     }
 
     public String reposicaoDePratos(int quantidade){
         StringBuilder builder = new StringBuilder();
-
         for(int i = 0;i < quantidade; i++) {
             novo = new ListaDePratos();
             novo.setNumPrato(contPratos.getContador() + i + 1);
@@ -48,7 +46,6 @@ public class pilhaDePratos {
                 topo = novo;
             }
         }
-
         return builder.toString();
     }
 
@@ -64,10 +61,9 @@ public class pilhaDePratos {
     }
 
     //verifica se a pilha de pratos está vazia
-    public boolean verificaSePilhaDePratos() {
+    public boolean verificaPilhaDePratos() {
         boolean temPratos = true;
-        aux = topo;
-        if(aux == null){
+        if(topo == null){
             temPratos = false;
         }
         return temPratos;

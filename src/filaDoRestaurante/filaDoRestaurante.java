@@ -26,8 +26,8 @@ public class filaDoRestaurante {
             fim.setProx(novo) ;
             fim = novo;
             fim.setProx(null);
-            builder.append("Inserido na fila.");
         }
+        builder.append("Inserido na fila com sucesso.");
         cont.setContador(cont.getContador()+1);
         return builder.toString();
     }
@@ -61,6 +61,20 @@ public class filaDoRestaurante {
         StringBuilder builder = new StringBuilder();
         builder.append("\nQuantidade de pessoas que estão na fila do Restaurante = "+ cont.getContador());
         return builder.toString();
+    }
+
+    //pega primeiro elemento da fila
+    public String pegaPrimeiroElemento(){
+        return inicio.getNome();
+    }
+
+    //verifica se a fila está vazia ou nao
+    public boolean verificaFila(){
+        boolean temGenteNaFila = true;
+        if(inicio == null){
+            temGenteNaFila = false;
+        }
+        return temGenteNaFila;
     }
 
 

@@ -62,4 +62,18 @@ public class filaDoBuffet {
         builder.append("\nQuantidade de pessoas que estão na fila do Buffet = " + cont.getContador());
         return builder.toString();
     }
+
+    //pega primeiro elemento da fila
+    public String pegaPrimeiroElemento(){
+        return inicio.getNome();
+    }
+
+    //verifica se a fila está vazia ou nao
+    public boolean verificaFilaBuffet(){
+        boolean temGenteNaFila = true;
+        if(inicio == null){
+            temGenteNaFila = false;
+        }
+        return temGenteNaFila;
+    }
 }
