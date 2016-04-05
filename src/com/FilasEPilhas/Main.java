@@ -15,6 +15,9 @@ public class Main {
         mesasDisponiveis mesas = new mesasDisponiveis();
         pilhaDePratos pratos = new  pilhaDePratos();
 
+        pratos.empilharInicio();
+        pratos.reposicaoDePratos(15);
+        System.out.println(pratos.consultar());
         /*filaClientes.inserirNaFilaRestaurante("Marcos");
         filaClientes.inserirNaFilaRestaurante("Ricardo");
         filaClientes.inserirNaFilaRestaurante("Paulo");

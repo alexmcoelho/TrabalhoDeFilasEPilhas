@@ -11,14 +11,13 @@ public class pilhaDePratos {
     ListaDePratos aux = null;
 
     ListaDePratos contPratos = new ListaDePratos();
-
+    ListaDePratos novo = new ListaDePratos();
 
     public void empilharInicio() {
         contPratos.setContador(30);
-        ListaDePratos novo = new ListaDePratos();
-        int contadorDePra = 1;
         for(int i = 0;i < contPratos.getContador(); i++) {
-            novo.setNumPrato(contadorDePra);
+            novo = new ListaDePratos();
+            novo.setNumPrato(i + 1);
             if(i == 0){
                 // a lista estava vazia e o elemento sera o primeiro e o ultimo
                 topo = novo;
@@ -29,7 +28,28 @@ public class pilhaDePratos {
                 novo.setProx(topo);
                 topo = novo;
             }
+
         }
+    }
+
+    public String reposicaoDePratos(int quantidade){
+        StringBuilder builder = new StringBuilder();
+
+        for(int i = 0;i < quantidade; i++) {
+            novo = new ListaDePratos();
+            novo.setNumPrato(contPratos.getContador() + i + 1);
+            if(topo == null){
+                topo = novo;
+                fim = novo;
+                novo.setProx(null);
+            } else {
+                // a lista ja� contem elementos e o novo elemento sera inserido no fim da lista
+                novo.setProx(topo);
+                topo = novo;
+            }
+        }
+
+        return builder.toString();
     }
 
     public String desinpillhar() {
@@ -51,5 +71,18 @@ public class pilhaDePratos {
             temPratos = false;
         }
         return temPratos;
+    }
+
+    public String consultar() {
+        StringBuilder builder = new StringBuilder();
+
+        System.out.println("Mostrando toda lista");
+        aux = topo;
+        while (aux != null) {
+            builder.append(aux.getNumPrato() + " | ");
+            aux = (ListaDePratos) aux.getProx();
+        }
+
+        return builder.toString();
     }
 }
