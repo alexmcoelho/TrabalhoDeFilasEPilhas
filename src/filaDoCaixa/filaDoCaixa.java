@@ -12,7 +12,7 @@ public class filaDoCaixa {
 
     ListaCaixa cont = new ListaCaixa();
 
-    public String inserirNaFilaDoCaixa(String nomeCliente, float valor) {
+    public String inserirNaFilaDoCaixa(String nomeCliente) {
         StringBuilder builder = new StringBuilder();
 
         ListaCaixa novo = new ListaCaixa();
@@ -32,16 +32,18 @@ public class filaDoCaixa {
         return builder.toString();
     }
 
-    public String removerDaFilaDoCaixa() {
+    public String removerDaFilaDoCaixa(float valor) {
         StringBuilder builder = new StringBuilder();
 
         aux = inicio;
-        //item a ser removido é o primeiro da lista
+        //item a sera removido é o primeiro da lista
         inicio = (ListaCaixa) aux.getProx();
         aux = inicio;
 
+        cont.setValor(cont.getValor() + valor);
         cont.setContador(cont.getContador() - 1);
-        builder.append("Elemento excluído com sucesso!");
+
+        builder.append("O valor pago foi = " + valor);
         return builder.toString();
     }
 

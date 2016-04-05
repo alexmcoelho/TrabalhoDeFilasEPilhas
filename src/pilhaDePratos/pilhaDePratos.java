@@ -12,22 +12,24 @@ public class pilhaDePratos {
 
     ListaDePratos contPratos = new ListaDePratos();
 
-    public String empilhar(int numero) {
-        StringBuilder builder = new StringBuilder();
-        ListaDePratos novo = new ListaDePratos();
-        novo.setNumPrato(numero);
-        if (topo == null) {
-            topo = novo;
-            fim = novo;
-            novo.setProx(null);
-        } else {
-            novo.setProx(topo);
-            topo = novo;
-        }
-        contPratos.setContador(contPratos.getContador()+1);
-        builder.append("Número inserido na pilha.");
 
-        return builder.toString();
+    public void empilharInicio() {
+        contPratos.setContador(30);
+        ListaDePratos novo = new ListaDePratos();
+        int contadorDePra = 1;
+        for(int i = 0;i < contPratos.getContador(); i++) {
+            novo.setNumPrato(contadorDePra);
+            if(i == 0){
+                // a lista estava vazia e o elemento sera o primeiro e o ultimo
+                topo = novo;
+                fim = novo;
+                novo.setProx(null);
+            } else {
+                // a lista ja� contem elementos e o novo elemento sera inserido no fim da lista
+                novo.setProx(topo);
+                topo = novo;
+            }
+        }
     }
 
     public String desinpillhar() {
