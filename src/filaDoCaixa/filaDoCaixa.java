@@ -26,8 +26,8 @@ public class filaDoCaixa {
             fim.setProx(novo) ;
             fim = novo;
             fim.setProx(null);
-            builder.append("Inserido na fila.");
         }
+        builder.append("Inserido na fila do caixa com sucesso!");
         cont.setContador(cont.getContador()+1);
         return builder.toString();
     }
@@ -61,6 +61,15 @@ public class filaDoCaixa {
 
     public int qtdPessoasFilaDoCaixa(){
         return cont.getContador();
+    }
+
+    //verifica se a fila está vazia ou nao
+    public boolean verificaFilaCaixa(){
+        boolean temGenteNaFila = true;
+        if(inicio == null){
+            temGenteNaFila = false;
+        }
+        return temGenteNaFila;
     }
 
 

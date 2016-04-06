@@ -54,7 +54,7 @@ public class mesasDisponiveis {
         if(mesaEstaLivre == true){
             //retira 1 do contador
             contMesaLivre.setContador(contMesaLivre.getContador() - 1);
-            builder.append("A Mesa que foi ocupada é a "+soGuardaAMesa+".");
+            builder.append("OK");
         }else{
             builder.append("A Mesa informada está incorreta!");
         }
@@ -64,13 +64,11 @@ public class mesasDisponiveis {
     public String decupaMesa(String mesa){
         StringBuilder builder = new StringBuilder();
         aux = inicio;
-        String soGuardaAMesa = "";
         boolean desocupouMesa = false;
         while (aux != null && desocupouMesa == false) {
             //verifica status
             if(aux.getNomeDaMesa().equals(mesa)) {
                 aux.setStatus("LIVRE");
-                soGuardaAMesa = aux.getNomeDaMesa();
                 aux = (ListaMesasDisp) aux.getProx();
                 desocupouMesa = false;
             }else{
@@ -80,27 +78,30 @@ public class mesasDisponiveis {
         if(desocupouMesa == true){
             //add 1 no contador
             contMesaLivre.setContador(contMesaLivre.getContador() + 1);
-            builder.append("A Mesa que foi desocupada é a "+soGuardaAMesa+".");
+            builder.append("OK");
         }else{
             builder.append("A Mesa informada está incorreta!");
         }
         return builder.toString();
     }
 
-    public String consultar() {
+    public String consultarMesasDisp() {
         StringBuilder builder = new StringBuilder();
 
-        System.out.println("Mostrando toda lista");
         aux = inicio;
         while (aux != null) {
-            builder.append(aux.getStatus() + " | " + aux.getNomeDaMesa() + "\n");
+            if(aux.getStatus().equals("LIVRE")){
+                builder.append(aux.getNomeDaMesa() + " | " + aux.getStatus() + "\n");
+            }
             aux = (ListaMesasDisp) aux.getProx();
         }
         //builder.append("\nQuantidade de mesas livres = " + contMesaLivre.getContador());
         return builder.toString();
     }
 
-    public int mesasDisponiveis(){
+    public int qtdMesasDisponiveis(){
         return contMesaLivre.getContador();
     }
+
+
 }

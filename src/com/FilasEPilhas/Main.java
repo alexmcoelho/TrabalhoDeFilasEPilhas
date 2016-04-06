@@ -1,9 +1,11 @@
 package com.FilasEPilhas;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import filaDeBuffet.*;
 import filaDoRestaurante.*;
 import mesasDisponiveis.*;
 import pilhaDePratos.*;
 import java.util.Scanner;
+import filaDoCaixa.*;
 
 public class Main {
 
@@ -16,6 +18,7 @@ public class Main {
         mesasDisponiveis mesas = new mesasDisponiveis();
         pilhaDePratos pratos = new  pilhaDePratos();
         filaDoBuffet buffet = new filaDoBuffet();
+        filaDoCaixa caixa = new filaDoCaixa();
 
         /*pratos.empilharInicio();
         pratos.reposicaoDePratos(15);
@@ -37,7 +40,15 @@ public class Main {
         System.out.println(pratos.verificaSePilhaDePratos());*/
 
         int opcao= 1;
+        int num;
         String nome;
+        String guardaResultadoMetodo;
+        char inf;
+
+        //inicia com 30 pratos e 30 mesas
+        mesas.insereTodasAsMesas();
+        pratos.empilharInicio();
+
         do {
             //ler.nextLine();
             System.out.printf("\n**** Menu Principal *****\n");
@@ -77,13 +88,39 @@ public class Main {
                     break;
 
                 case 3:
+                    ler.nextLine();
                     if(buffet.verificaFilaBuffet() == false){
                         System.out.println("Primeiro o cliente tem que fazer seu prato!");
                     }else{
-                        System.out.println();
-                        System.out.println(buffet.inserirNaFila(filaClientesR.pegaPrimeiroElemento()));
-                        filaClientesR.removerDaFila();
+                        System.out.println("Mesas Livres");
+                        System.out.println(mesas.consultarMesasDisp());
+                        System.out.println("Informe o número da Mesa: ");
+                        num = ler.nextInt();
+                        guardaResultadoMetodo = mesas.ocupaMesa("MESA " + num);
+                        if(guardaResultadoMetodo.equals("OK")){
+                            System.out.println("O cliente pode começar o seu almoço!");
+                            buffet.removerDaFila();
+                        }else{
+                            System.out.println("A Mesa informada está incorreta!");
+                        }
                     }
+                    break;
+
+                case 4:
+                    ler.nextLine();
+                    System.out.println("Fila do Caixa.");
+                    System.out.println("Informe o número da Mesa em que o cliente estava almoçado: ");
+                    num = ler.nextInt();
+                    guardaResultadoMetodo = mesas.decupaMesa("MESA " + num);
+                    if(guardaResultadoMetodo.equals("OK")){
+                        System.out.println("Informe o nome da pessoa que será inserido na fila: ");
+                        nome = ler.nextLine();
+                        System.out.println(caixa.inserirNaFilaDoCaixa(nome));
+                    }
+                    break;
+
+                case 5:
+
                     break;
             }
         } while (opcao != 0);

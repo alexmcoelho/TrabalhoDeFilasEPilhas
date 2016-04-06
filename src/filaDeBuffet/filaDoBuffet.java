@@ -26,8 +26,8 @@ public class filaDoBuffet {
             fim.setProx(novo) ;
             fim = novo;
             fim.setProx(null);
-            builder.append("Inserido na fila.");
         }
+        builder.append("Inserido na fila do Buffet com sucesso.");
         cont.setContador(cont.getContador()+1);
         return builder.toString();
     }
