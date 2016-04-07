@@ -42,9 +42,9 @@ public class filaDoCaixa {
 
         cont.setValor(cont.getValor() + valor);
         cont.setContador(cont.getContador() - 1);
-        cont.setContador(cont.getContadorPesAtendidas() + 1);
+        cont.setContadorPesAtendidas(cont.getContadorPesAtendidas() + 1);
 
-        builder.append("O valor pago foi = " + valor);
+        builder.append("Pagamento efetuado com sucesso.");
         return builder.toString();
     }
 
@@ -67,6 +67,11 @@ public class filaDoCaixa {
             temGenteNaFila = false;
         }
         return temGenteNaFila;
+    }
+
+    //pega primeiro elemento da fila
+    public String pegaPrimeiroElemento(){
+        return inicio.getNome();
     }
 
 

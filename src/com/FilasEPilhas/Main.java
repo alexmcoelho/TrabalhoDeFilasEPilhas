@@ -98,7 +98,7 @@ public class Main {
                     }else{
                         System.out.println("Mesas Livres");
                         System.out.println(mesas.consultarMesasDisp());
-                        System.out.println("Informe o número da Mesa: ");
+                        System.out.println("Informe o número da Mesa que o cliente " + buffet.pegaPrimeiroElemento() + " irá almoçar: ");
                         num = ler.nextInt();
                         guardaResultadoMetodo = mesas.ocupaMesa("MESA " + num);
                         if(guardaResultadoMetodo.equals("OK")){
@@ -117,9 +117,12 @@ public class Main {
                     num = ler.nextInt();
                     guardaResultadoMetodo = mesas.decupaMesa("MESA " + num);
                     if(guardaResultadoMetodo.equals("OK")){
-                        System.out.println("Informe o nome da pessoa que será inserido na fila: ");
+                        ler.nextLine();
+                        System.out.println("Informe o nome da pessoa que será inserida na fila: ");
                         nome = ler.nextLine();
                         System.out.println(caixa.inserirNaFilaDoCaixa(nome));
+                    }else{
+                        System.out.println("Não foi possível inserir o cliente na fila do caixa!");
                     }
                     break;
 
@@ -128,7 +131,7 @@ public class Main {
                     if(caixa.verificaFilaCaixa() == false){
                        System.out.println("Primeiro o cliente tem que ser inserido na fila do Caixa!");
                     }else {
-                        System.out.println("Informe a valor total de gastos do cliente");
+                        System.out.println("Informe a valor total de gastos do cliente " + caixa.pegaPrimeiroElemento() + ": ");
                         valor = ler.nextFloat();
                         System.out.println(caixa.removerDaFilaDoCaixa(valor));
                     }
@@ -143,14 +146,13 @@ public class Main {
                     do {
                         ler.nextLine();
                         System.out.printf("\n**** Menu dos Relatórios*****\n");
-                        System.out.printf("[ 1 ] Total do valor Caixa\n");
+                        System.out.printf("[ 1 ] Total valor em Caixa\n");
                         System.out.printf("[ 2 ] Número de pessoas na fila para almoçar\n");
                         System.out.printf("[ 3 ] Número de pessoas na fila do caixa\n");
                         System.out.printf("[ 4 ] Número de pessoas no restaurante almoçando\n");
                         System.out.printf("[ 5 ] Número de pessoas atendidas\n");
                         System.out.printf("[ 6 ] Número de pratos na pilha\n");
-                        System.out.printf("[ 7 ] Número de pratos na pilha\n");
-                        System.out.printf("[ 8 ] Número de mesas livres\n");
+                        System.out.printf("[ 7 ] Número de mesas livres\n");
                         System.out.printf("[ 0 ] Sair\n");
                         System.out.printf("\nOpção Desejada: ");
                         opcaoRelatorio = ler.nextInt();
@@ -160,30 +162,29 @@ public class Main {
                                 System.out.println("Total valor -> " + caixa.valorMovimentado());
                                 break;
                             case 2:
-                                System.out.println("Quantidade de pessoas -> " + filaClientesR.numDePessoasQueEstaoNaFilaRest());
+                                System.out.println("Quantidade de pessoas na fila do Restaurante -> " + filaClientesR.numDePessoasQueEstaoNaFilaRest());
                                 break;
                             case 3:
-                                System.out.println("Quantidade de pessoas -> " + caixa.qtdPessoasFilaDoCaixa());
+                                System.out.println("Quantidade de pessoas na fila do caixa -> " + caixa.qtdPessoasFilaDoCaixa());
                                 break;
                             case 4:
-                                System.out.println("Quantidade de pessoas -> " + mesas.qtdPessoasAlmocando());
+                                System.out.println("Quantidade de pessoas no restaurante almoçando -> " + mesas.qtdPessoasAlmocando());
                                 break;
                             case 5:
-                                System.out.println("Quantidade de pessoas -> " + caixa.qtdPessoasAtendidas());
+                                System.out.println("Quantidade de pessoas atendidas -> " + caixa.qtdPessoasAtendidas());
                                 break;
                             case 6:
-                                System.out.println("Quantidade de pratos -> " + pratos.qtdPratosNaPilha());
+                                System.out.println("Quantidade de pratos pratos na pilha -> " + pratos.qtdPratosNaPilha());
                                 break;
                             case 7:
-                                System.out.println("Quantidade de mesas -> " + mesas.qtdMesasDisponiveis());
+                                System.out.println("Quantidade de mesas livres -> " + mesas.qtdMesasDisponiveis());
                                 break;
                             default:
                                 System.out.println("Opção inválida");
                         }
                     }while(opcaoRelatorio != 0);
+                    ler.nextLine();
                     break;
-                default:
-                    System.out.println("Opção inválida");
             }
         } while (opcao != 0);
     }

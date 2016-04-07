@@ -25,7 +25,7 @@ public class filaDoBuffet {
             fim = novo;
             fim.setProx(null);
         }
-        builder.append("Inserido na fila do Buffet com sucesso.");
+        builder.append(nomeCliente + " foi inserido na fila do Buffet com sucesso.");
         return builder.toString();
     }
 

@@ -45,10 +45,8 @@ public class filaDoRestaurante {
         return builder.toString();
     }
 
-    public String numDePessoasQueEstaoNaFilaRest(){
-        StringBuilder builder = new StringBuilder();
-        builder.append("\nQuantidade de pessoas que estão na fila do Restaurante = "+ cont.getContador());
-        return builder.toString();
+    public int numDePessoasQueEstaoNaFilaRest(){
+        return cont.getContador();
     }
 
     //pega primeiro elemento da fila

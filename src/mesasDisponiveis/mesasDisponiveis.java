@@ -70,7 +70,7 @@ public class mesasDisponiveis {
             if(aux.getNomeDaMesa().equals(mesa)) {
                 aux.setStatus("LIVRE");
                 aux = (ListaMesasDisp) aux.getProx();
-                desocupouMesa = false;
+                desocupouMesa = true;
             }else{
                 aux = (ListaMesasDisp) aux.getProx();
             }

@@ -45,7 +45,9 @@ public class pilhaDePratos {
                 novo.setProx(topo);
                 topo = novo;
             }
+            contPratos.setContador(contPratos.getContador() + 1);
         }
+        builder.append("Reposição de pratos realizada com sucesso.");
         return builder.toString();
     }
 
