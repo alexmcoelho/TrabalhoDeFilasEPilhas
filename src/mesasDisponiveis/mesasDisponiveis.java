@@ -103,5 +103,17 @@ public class mesasDisponiveis {
         return contMesaLivre.getContador();
     }
 
+    public int qtdPessoasAlmocando(){
+        int contador = 0;
+        aux = inicio;
+        while(aux != null){
+            if(aux.getStatus().equals("OCUPADO")){
+                contador++;
+            }
+            aux = (ListaMesasDisp) aux.getProx();
+        }
+        return contador;
+    }
+
 
 }

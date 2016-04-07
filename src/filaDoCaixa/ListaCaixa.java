@@ -8,6 +8,7 @@ import com.FilasEPilhas.Lista;
 public class ListaCaixa extends Lista{
     private String nome;
     private float valor;
+    private int contadorPesAtendidas;
 
     public String getNome() {
         return nome;
@@ -23,6 +24,14 @@ public class ListaCaixa extends Lista{
 
     public void setValor(float valor) {
         this.valor = valor;
+    }
+
+    public int getContadorPesAtendidas() {
+        return contadorPesAtendidas;
+    }
+
+    public void setContadorPesAtendidas(int contadorPesAtendidas) {
+        this.contadorPesAtendidas = contadorPesAtendidas;
     }
 }
 

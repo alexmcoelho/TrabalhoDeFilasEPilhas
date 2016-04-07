@@ -42,25 +42,22 @@ public class filaDoCaixa {
 
         cont.setValor(cont.getValor() + valor);
         cont.setContador(cont.getContador() - 1);
+        cont.setContador(cont.getContadorPesAtendidas() + 1);
 
         builder.append("O valor pago foi = " + valor);
         return builder.toString();
     }
 
-    public String consultar() {
-        StringBuilder builder = new StringBuilder();
-
-        System.out.println("Mostrando toda lista");
-        aux =  inicio;
-        while (aux != null) {
-            builder.append(aux.getNome() + " | ");
-            aux = (ListaCaixa) aux.getProx();
-        }
-        return builder.toString();
-    }
-
     public int qtdPessoasFilaDoCaixa(){
         return cont.getContador();
+    }
+
+    public int qtdPessoasAtendidas(){
+        return cont.getContadorPesAtendidas();
+    }
+
+    public float valorMovimentado(){
+        return cont.getValor();
     }
 
     //verifica se a fila está vazia ou nao

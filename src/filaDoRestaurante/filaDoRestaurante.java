@@ -45,18 +45,6 @@ public class filaDoRestaurante {
         return builder.toString();
     }
 
-    public String consultar() {
-        StringBuilder builder = new StringBuilder();
-
-        System.out.println("Mostrando toda lista");
-        aux =  inicio;
-        while (aux != null) {
-            builder.append(aux.getNome() + " | ");
-            aux = (ListaRestaurante) aux.getProx();
-        }
-        return builder.toString();
-    }
-
     public String numDePessoasQueEstaoNaFilaRest(){
         StringBuilder builder = new StringBuilder();
         builder.append("\nQuantidade de pessoas que estão na fila do Restaurante = "+ cont.getContador());

@@ -10,8 +10,6 @@ public class filaDoBuffet {
     //O objeto aux é um objeto auxiliar
     ListaBuffet aux = null;
 
-    ListaBuffet cont = new ListaBuffet();
-
     public String inserirNaFila(String nomeCliente) {
         StringBuilder builder = new StringBuilder();
 
@@ -28,7 +26,6 @@ public class filaDoBuffet {
             fim.setProx(null);
         }
         builder.append("Inserido na fila do Buffet com sucesso.");
-        cont.setContador(cont.getContador()+1);
         return builder.toString();
     }
 
@@ -40,26 +37,7 @@ public class filaDoBuffet {
         inicio = (ListaBuffet) aux.getProx();
         aux = inicio;
 
-        cont.setContador(cont.getContador() - 1);
         builder.append("Elemento excluído com sucesso!");
-        return builder.toString();
-    }
-
-    public String consultar() {
-        StringBuilder builder = new StringBuilder();
-
-        System.out.println("Mostrando toda lista");
-        aux = inicio;
-        while (aux != null) {
-            builder.append(aux.getNome() + " | ");
-            aux = (ListaBuffet) aux.getProx();
-        }
-        return builder.toString();
-    }
-
-    public String numDePessoasQueEstaoNaFilaBuffet(){
-        StringBuilder builder = new StringBuilder();
-        builder.append("\nQuantidade de pessoas que estão na fila do Buffet = " + cont.getContador());
         return builder.toString();
     }
 

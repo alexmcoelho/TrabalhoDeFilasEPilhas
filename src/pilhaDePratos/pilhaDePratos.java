@@ -69,16 +69,7 @@ public class pilhaDePratos {
         return temPratos;
     }
 
-    public String consultar() {
-        StringBuilder builder = new StringBuilder();
-
-        System.out.println("Mostrando toda lista");
-        aux = topo;
-        while (aux != null) {
-            builder.append(aux.getNumPrato() + " | ");
-            aux = (ListaDePratos) aux.getProx();
-        }
-
-        return builder.toString();
+    public int qtdPratosNaPilha(){
+        return contPratos.getContador();
     }
 }
